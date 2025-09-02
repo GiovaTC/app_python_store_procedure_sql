@@ -1,4 +1,7 @@
 # app_python_store_procedure_sql
+
+<img width="2551" height="1079" alt="image" src="https://github.com/user-attachments/assets/067f3ee0-4462-4f9f-b827-ac52383e4f01" />
+
 # 🐍 Python + SQL Server: Ejemplo completo de **Upsert** con Stored Procedure y `pyodbc`
 
 Este ejemplo muestra cómo:
