@@ -37,4 +37,29 @@ def upsert_usuario(nombre: str, edad: int, email: str, id_existente: int | None 
             cols = [d[0] for d in cur.description]
             fila = dict(zip(cols, row))
             # Segundo result set: FinalId
+            if cur.nextset():
+                row2 = cur.fetchone()
+                if row2 is None:
+                    conn.rollback()
+                    raise RuntimeError("No se pudo leer FinalId .")
+                final_id = row2[0]
+            else:
+                conn.rollback()
+                raise RuntimeError("No se encontró el segundo result set .")
             
+            conn.commit()
+
+            accion = fila.get("Accion", "DESCONOCIDA")
+            fila["Id"] = final_id
+
+            return final_id, accion, fila
+if__name__ == "__main__":
+# ---- INSERT ----
+nuevo_id, accion_ins, fila_ins = upsert_usuario(
+    nombre="Carlos Pérez",
+    edad=28,
+    email="carlos.perez@exam.com"
+)
+print(f"[{accion_ins}] Nuevo Id: {nuevo_id} -> {fila_ins}")
+# ---- UPDATE ----
+
