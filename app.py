@@ -2,11 +2,12 @@ import pyodbc
 
 # ========= Configura tu conexión =========
 CONN_STR = (
-    "DRIVER={ODBC Driver 18 for SQL Server};"
+    "DRIVER={ODBC Driver 17 for SQL Server};"
     "SERVER=GTAPIERO-POLI;"
     "DATABASE=PruebaPython;"
     "UID=sa;"
     "PWD=tapiero;"
+    "TrustServerCertificate=Yes;"
 )
 
 def upsert_usuario(nombre: str, edad: int, email: str, id_existente: int | None = None):
