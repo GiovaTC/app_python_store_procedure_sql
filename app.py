@@ -28,3 +28,13 @@ def upsert_usuario(nombre: str, edad: int, email: str, id_existente: int | None 
                 -- La SP devuelve la fila afectada y luego el Id final
                 SELECT FinalId = @outId;
             """
+            cur.execute(tsql, (id_existente, nombre, edad, email))
+            # Primer result set: detalles de la acción
+            row = cur.fetchone()
+            if row is None:
+                conn.rollback()
+                raise RuntimeError("La SP no devolvió resultados .")
+            cols = [d[0] for d in cur.description]
+            fila = dict(zip(cols, row))
+            # Segundo result set: FinalId
+            
