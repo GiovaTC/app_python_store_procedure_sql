@@ -54,19 +54,19 @@ def upsert_usuario(nombre: str, edad: int, email: str, id_existente: int | None 
 
             return final_id, accion, fila
 if __name__ == "__main__":
-# ---- INSERT ----
+    # ---- INSERT ----
     nuevo_id, accion_ins, fila_ins = upsert_usuario(
     nombre="Carlos Pérez",
     edad=28,
     email="carlos.perez@exam.com"
-)
-print(f"[{accion_ins}] Nuevo Id: {nuevo_id} -> {fila_ins}")
-# ---- UPDATE ----
-id_actualizado, accion_upd, fila_upd = update_usuario(
-    nombre ="Carlos A. Pérez",
-    edad = 29,
-    email = "carlos.perez@exam.com",
-    id_existente=nuevo_id
-)
-print(f"[{accion_upd}] Id: {id_actualizado} -> {fila_upd}")
+    )
+    print(f"[{accion_ins}] Nuevo Id: {nuevo_id} -> {fila_ins}")
+    # ---- UPDATE ----
+    id_actualizado, accion_upd, fila_upd = update_usuario(
+        nombre ="Carlos A. Pérez",
+        edad = 29,
+        email = "carlos.perez@exam.com",
+        id_existente=nuevo_id
+    )
+    print(f"[{accion_upd}] Id: {id_actualizado} -> {fila_upd}")
 
