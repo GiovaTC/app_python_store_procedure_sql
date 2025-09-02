@@ -62,7 +62,7 @@ if __name__ == "__main__":
     )
     print(f"[{accion_ins}] Nuevo Id: {nuevo_id} -> {fila_ins}")
     # ---- UPDATE ----
-    id_actualizado, accion_upd, fila_upd = update_usuario(
+    id_actualizado, accion_upd, fila_upd = upsert_usuario(
         nombre ="Carlos A. Pérez",
         edad = 29,
         email = "carlos.perez@exam.com",
